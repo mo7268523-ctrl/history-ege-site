@@ -3,7 +3,7 @@ import hashlib, json, pathlib, zipfile
 manifest = json.loads(pathlib.Path("publication.json").read_text())
 target = pathlib.Path("site")
 allowed = {item["path"] for item in manifest["files"]}
-volumes = sorted(pathlib.Path(".").glob("public-site-part-*.zip"))
+volumes = sorted(pathlib.Path(".").glob("site-small-*.zip"))
 if not volumes:
     raise RuntimeError("Не загружены части сохранённого публичного выпуска")
 for volume in volumes:

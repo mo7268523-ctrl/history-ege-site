@@ -2,7 +2,7 @@ name: Публикация карточек на GitHub Pages
 on:
   push:
     branches: [main]
-    paths: ['site/**', 'public-site-part-11.zip']
+    paths: ['site/**', 'site-small-055.zip']
   workflow_dispatch:
     inputs:
       import_release:
