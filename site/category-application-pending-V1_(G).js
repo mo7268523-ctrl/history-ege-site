@@ -1,0 +1,2 @@
+// Содержательные ответы актуальны; старые категорийные подсказки ждут отдельной сверки.
+window.CARD_PENDING_APPLICATIONS=["crimea-source-monument-research", "crimea-source-propaganda", "crimea-source-napoleon-death", "crimea-source-nanking", "crimea-source-napoleon-iii", "crimea-source-austria-prussia", "crimea-source-second-opium", "crimea-source-suez", "crimea-source-italy", "crimea-source-bastion", "crimea-source-holy-places", "crimea-source-nicholas", "crimea-source-tolstoy"];

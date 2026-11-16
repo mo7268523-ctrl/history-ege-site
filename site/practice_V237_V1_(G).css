@@ -1,0 +1,21 @@
+.release237 {margin:0 0 1.25rem;}
+.release237 > summary {font-weight:700; cursor:pointer; padding:.7rem 0; color:#183457;}
+.release237 ul {margin:.7rem 0 1rem; padding-left:1.2rem;}
+.release237 li {margin:.45rem 0;}
+.release237 a {color:#194c77; text-decoration:underline; text-underline-offset:.16em;}
+.exercise237 {display:grid;gap:12px; min-width:0; scroll-margin-top:9rem;}
+.exercise237:focus {outline:2px solid #326a97; outline-offset:4px;}
+.response237 input {font:inherit; max-width:100%; min-height:44px; padding:.5rem; border:1px solid #8192a1;border-radius:5px;}
+.response237 form {display:grid;gap:.75rem; max-width:38rem;}
+.response237 form button {justify-self:start;}
+.response237 .rubric-row {border-top:1px solid #c7d3dd;padding:.65rem 0;}
+.response237 .rubric-row summary {font-weight:650;cursor:pointer;}
+.matching236 label {overflow:hidden;padding-inline:2px;}
+.matching236 select {max-width:100%;text-overflow:ellipsis;}
+.matching236 .choices237 {margin:.7rem 0;}
+.choices237 ol {padding-left:2rem;line-height:1.48;}
+.syllabus237 {margin:1rem 0;}
+.syllabus-groups {padding-left:1.2rem;}
+.syllabus-groups > li {margin:.7rem 0;}
+.syllabus-groups ul {padding-left:1.25rem;}
+.syllabus-groups a {display:inline-block;padding:.18rem 0;}
