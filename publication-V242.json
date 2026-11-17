@@ -1,0 +1,73 @@
+{
+  "version": "V242",
+  "base_manifest": "publication-V241.json",
+  "changed_files": [
+    {
+      "path": "site/index.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b3281ef6398ab84376946611d881c94a3b7cc887"
+    },
+    {
+      "path": "site/index-v241.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7c9ef1ef77d7ca989206eeca90db954a3d3d1299"
+    },
+    {
+      "path": "site/optimized-v242/serfdom-1861.json.gz",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "52c3ac319fe1553a5aff30f848f189c178aa661b"
+    },
+    {
+      "path": "site/optimized-v242/peter-foreign-policy.json.gz",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ec9a63e44bdb5e11d666fdb508818eaaa1b2a749"
+    },
+    {
+      "path": "site/optimized-v242/nicholas-crimean.json.gz",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a8afc41f75d8ddf511be0d1e69c60ff60c3ae1fa"
+    },
+    {
+      "path": "site/optimized-v242/boot.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9eb45eff5dd9fa9e944c14c340b0cbdc5daf9448"
+    },
+    {
+      "path": "site/optimized-v242/style.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "99c43b3087a0c4c22eddab11323a6cafa3e27d54"
+    }
+  ],
+  "optimization": {
+    "version": "V242",
+    "type": "performance_only",
+    "baseline": "V241",
+    "startup_scripts_before": 102,
+    "startup_scripts_after": 1,
+    "startup_js_bytes_before": 15832230,
+    "startup_js_bytes_after": 549616,
+    "startup_js_gzip_bytes_before": 2529595,
+    "startup_js_gzip_bytes_after": 116494,
+    "theme_gzip_bytes": {
+      "serfdom": 943767,
+      "peter": 492449,
+      "crimea": 938810
+    },
+    "data_and_render_parity_routes": 1576,
+    "all_three_topic_packs_identical": true,
+    "images": "lazy; originals retained",
+    "compatibility": "Legacy loader for browsers without DecompressionStream",
+    "content_queue_pending": 31,
+    "next_number": "5C8425",
+    "database_changed": false,
+    "physical_ipad": "not_tested",
+    "publication": "pending"
+  }
+}
