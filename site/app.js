@@ -73,6 +73,22 @@ function releaseMenu240() {
   }
   return `<details class="release237"><summary>Новая проверка V240 · ${links.length} заданий</summary><p>Сверены оригиналы и исторические основания следующих 9 номеров очереди. Для сочинений разобраны требования выбранного варианта. Авторский разбор и официальный ключ различаются в карточке задания.</p><ul>${links.join('')}</ul></details>`;
 }
+function releaseMenu241() {
+  const seen = new Set(), links = [];
+  for (const target of window.HISTORY241?.targets || []) {
+    if (seen.has(target.number)) continue;
+    const pack = window.CARD_TOPICS[target.topic];
+    const item = Object.values(pack.CARD_DATA.items).find(item =>
+      item.taskIds.includes(target.task) && pack.CARD_DATA.topic.categories.some(cat => cat.items.includes(item.id)));
+    if (!item) continue;
+    const cat = pack.CARD_DATA.topic.categories.find(cat => cat.items.includes(item.id));
+    const url = `#/topic/${target.topic}/category/${cat.id}/item/${item.id}/practice/${target.task}`;
+    const task = pack.CARD_DATA.tasks[target.task];
+    links.push(`<li><a href="${esc(url)}">${esc(task.title)} · ${esc(pack.CARD_DATA.topic.name)}</a></li>`);
+    seen.add(target.number);
+  }
+  return `<details class="release237"><summary>Новая проверка V241 · ${links.length} задание</summary><p>Задание 584020: разобраны все пять суждений о марке с Нахимовым. Современный статус Севастополя пояснён отдельно; официальный ключ не получен.</p><ul>${links.join('')}</ul></details>`;
+}
 function releaseMenu237() {
   const pack = window.HISTORY237;
   const seen = new Set();
@@ -157,7 +173,7 @@ function syllabus237() {
       (i===0?'Кодификатор ЕГЭ-2027':'Тематический навигатор ФИПИ')+' ↗</a>').join(' · ')+'</p></details>';
 }
 
-function topics(){const packs=Object.values(window.CARD_TOPICS||{base:{CARD_DATA:D}});return `<section class="intro"><span class="eyebrow blue">ИСТОРИЯ · ПОДГОТОВКА К ЕГЭ</span><h1>Выберите тему</h1><p class="lead">Тема → категория → элемент → материал → задания. Карты и произведения культуры открываются внутри материала; каждый цвет показывает отдельное подтверждённое основание.</p></section>${releaseMenu240()}${releaseMenu239()}${releaseMenu238()}${releaseMenu237()}<div class="topics-list">${packs.map((pack,i)=>{const d=pack.CARD_DATA;return `<a class="topic-card" href="#/topic/${esc(d.topic.id)}"><span class="topic-index">${String(i+1).padStart(2,'0')}</span><div class="topic-content"><span class="period">${esc(d.topic.period)} · Тема ${esc(d.topic.parentCode)}</span><h2>${esc(d.topic.name)}</h2><p>${esc(d.topic.summary)}</p><div class="topic-meta">${new Set(d.topic.categories.flatMap(c=>pack.CARD_CATEGORY_REVIEW?.categories?.[c.id]??c.items)).size} элементов · ${d.topic.categories.length} категорий · ${Object.keys(d.tasks).length} заданий</div><span class="topic-enter">Выбрать тему <span aria-hidden="true">→</span></span></div>${d.topic.previewImage?`<div class="topic-art" aria-hidden="true"><img src="${esc(d.topic.previewImage)}" alt=""></div>`:''}</a>`;}).join('')}</div><div class="demo-note"><span class="note-mark">i</span><p>Основания источников и область проверки задания указаны у каждого элемента. <a href="index-review-v21.html">Матрица тем и источников ↗</a></p></div>`;}
+function topics(){const packs=Object.values(window.CARD_TOPICS||{base:{CARD_DATA:D}});return `<section class="intro"><span class="eyebrow blue">ИСТОРИЯ · ПОДГОТОВКА К ЕГЭ</span><h1>Выберите тему</h1><p class="lead">Тема → категория → элемент → материал → задания. Карты и произведения культуры открываются внутри материала; каждый цвет показывает отдельное подтверждённое основание.</p></section>${releaseMenu241()}${releaseMenu240()}${releaseMenu239()}${releaseMenu238()}${releaseMenu237()}<div class="topics-list">${packs.map((pack,i)=>{const d=pack.CARD_DATA;return `<a class="topic-card" href="#/topic/${esc(d.topic.id)}"><span class="topic-index">${String(i+1).padStart(2,'0')}</span><div class="topic-content"><span class="period">${esc(d.topic.period)} · Тема ${esc(d.topic.parentCode)}</span><h2>${esc(d.topic.name)}</h2><p>${esc(d.topic.summary)}</p><div class="topic-meta">${new Set(d.topic.categories.flatMap(c=>pack.CARD_CATEGORY_REVIEW?.categories?.[c.id]??c.items)).size} элементов · ${d.topic.categories.length} категорий · ${Object.keys(d.tasks).length} заданий</div><span class="topic-enter">Выбрать тему <span aria-hidden="true">→</span></span></div>${d.topic.previewImage?`<div class="topic-art" aria-hidden="true"><img src="${esc(d.topic.previewImage)}" alt=""></div>`:''}</a>`;}).join('')}</div><div class="demo-note"><span class="note-mark">i</span><p>Основания источников и область проверки задания указаны у каждого элемента. <a href="index-review-v21.html">Матрица тем и источников ↗</a></p></div>`;}
 
 function pilotCount(block){const ids=new Set(D.topic.categories.filter(c=>c.block===block).flatMap(c=>visibleItems(c)));return window.CARD_PILOT.items.filter(it=>ids.has(it.id)).length;}
 function categoryOrigins(cat){
