@@ -1,0 +1,29 @@
+{
+  "version": "V242",
+  "type": "performance_only",
+  "baseline": "V241",
+  "startup_scripts_before": 102,
+  "startup_scripts_after": 1,
+  "startup_js_bytes_before": 15832230,
+  "startup_js_bytes_after": 549616,
+  "startup_js_gzip_bytes_before": 2529595,
+  "startup_js_gzip_bytes_after": 116494,
+  "theme_gzip_bytes": {
+    "serfdom": 943767,
+    "peter": 492449,
+    "crimea": 938810
+  },
+  "data_and_render_parity_routes": 1576,
+  "all_three_topic_packs_identical": true,
+  "images": "lazy; originals retained",
+  "compatibility": "Legacy loader for browsers without DecompressionStream",
+  "content_queue_pending": 31,
+  "next_number": "5C8425",
+  "database_changed": false,
+  "physical_ipad": "not_tested",
+  "publication": "success",
+  "workflow_id": 44125579052,
+  "public_commit": "fdc45bd02b5e711351db3802bb873dd8f6a35c9a",
+  "private_commit": "0bc5d0640d4af65f38e235a03ebaaa325ab53717",
+  "live_browser": "V242: главная, загрузка темы, прямой маршрут 584020, авторский ответ проверены"
+}
