@@ -39,6 +39,36 @@
     };
     window.HISTORY253.v254Installed = true;
   }
+  function installReviewedSourceLinks() {
+    if (typeof document === 'undefined' || typeof MutationObserver === 'undefined') return;
+    const render = () => {
+      if (!location.hash.includes('/category/N04-U10/item/crimea-source-shimoda')) return;
+      const host = document.querySelector('.category-application');
+      if (!host || host.querySelector('.reviewed-source-links')) return;
+      const answer = window.CARD_REVIEWED_APPLICATIONS?.answers?.[KEY];
+      if (!answer?.reviewedSourceLinks?.length) return;
+      const row = document.createElement('p');
+      row.className = 'reviewed-source-pages reviewed-source-links';
+      const label = document.createElement('strong');
+      label.textContent = 'Проверенные источники: ';
+      row.append(label);
+      answer.reviewedSourceLinks.forEach((source, index) => {
+        if (index) row.append(document.createTextNode(' · '));
+        const link = document.createElement('a');
+        link.className = 'source-page-link';
+        link.href = source.href;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = source.label;
+        row.append(link);
+      });
+      host.append(row);
+    };
+    new MutationObserver(render).observe(document.documentElement, {childList: true, subtree: true});
+    addEventListener('hashchange', render);
+    render();
+  }
+  installReviewedSourceLinks();
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', installAfterV253, {once: true});
   } else {
