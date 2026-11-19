@@ -2,7 +2,7 @@ name: Публикация карточек на GitHub Pages
 on:
   push:
     branches: [main]
-    paths: ['site/**', 'site-small-055.zip']
+    paths: ['site/**', 'site-small-055.zip', '.github/workflows/pages.yml']
   workflow_dispatch:
     inputs:
       import_release:
@@ -10,6 +10,7 @@ on:
         type: boolean
         default: false
 permissions:
+  actions: read
   contents: write
   pages: write
   id-token: write
@@ -19,6 +20,8 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      PAGES_ARTIFACT: github-pages-${{ github.run_attempt }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -54,6 +57,22 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: site
+          name: ${{ env.PAGES_ARTIFACT }}
+      - name: Дождаться появления артефакта текущей попытки
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for delay in 0 3 5 8 12 16; do
+            sleep "$delay"
+            if count=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts?name=$PAGES_ARTIFACT" \
+              --jq '[.artifacts[] | select(.expired == false)] | length') && [ "$count" = 1 ]; then
+              exit 0
+            fi
+          done
+          echo "Артефакт $PAGES_ARTIFACT недоступен для публикации" >&2
+          exit 1
       - name: Опубликовать
         id: deployment
         uses: actions/deploy-pages@v5
+        with:
+          artifact_name: ${{ env.PAGES_ARTIFACT }}
