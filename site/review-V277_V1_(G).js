@@ -522,7 +522,7 @@
     const key = route[4] + '|' + route[6];
     const answer = tables.answers[key];
     const host = document.querySelector('#content .category-application');
-    if (!answer || !host || host.querySelector('.reviewed-source-links')) return;
+    if (!answer?.reviewedSourceLinks?.length || !host || host.querySelector('.reviewed-source-links')) return;
 
     const row = document.createElement('p');
     row.className = 'reviewed-source-pages reviewed-source-links';
