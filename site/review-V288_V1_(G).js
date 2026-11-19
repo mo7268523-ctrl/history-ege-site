@@ -172,9 +172,15 @@
     if (route[1] !== 'topic' || route[2] !== topicId || route[3] !== 'category' ||
         route[5] !== 'item' || route.length !== 7) return;
     const key = route[4] + '|' + route[6];
-    const answer = tables.answers[key];
+    const update = tables.answers[key];
+    if (!update?.reviewedSourceLinks?.length) return;
+    const answer = window.CARD_REVIEWED_APPLICATIONS?.answers?.[key] || update;
     const host = document.querySelector('#content .category-application');
-    if (!answer?.reviewedSourceLinks?.length || !host || host.querySelector('.reviewed-source-links')) return;
+    if (!answer?.reviewedSourceLinks?.length || !host) return;
+    const previousRow = host.querySelector('.reviewed-source-links');
+    const links = previousRow?.querySelectorAll('a');
+    if (links?.length === answer.reviewedSourceLinks.length && answer.reviewedSourceLinks.every((source, index) =>
+      links[index].getAttribute('href') === source.href && links[index].textContent === source.label)) return;
 
     const row = document.createElement('p');
     row.className = 'reviewed-source-pages reviewed-source-links';
@@ -191,7 +197,8 @@
       link.textContent = source.label;
       row.append(link);
     });
-    host.append(row);
+    if (previousRow) previousRow.replaceWith(row);
+    else host.append(row);
   }
 
   // Совместимая версия уже отрисовывает эти ссылки в app.js.
