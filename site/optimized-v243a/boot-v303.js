@@ -874,7 +874,7 @@ function reviewedExerciseAnswer(task) {
  if(!review)return '';
  const pages=review.sources.map(page=>`<button class="source-page-link" data-reference-image="${esc(page.src)}" data-reference-label="${esc(page.label)}">${esc(page.label)} ⤢</button>`).join(' ');
  const links=review.links.map(link=>`<p><a href="${esc(link.url)}" target="_blank" rel="noopener noreferrer">${esc(link.title)} ↗</a></p>`).join('');
- const title=review.partial?'Авторский разбор · часть задания':'Решение упражнения · авторский разбор';
+ const title=task.bankVerification?.status==='ВЕРНО'?'Ответ подтверждён открытым банком ФИПИ':review.partial?'Авторский разбор · часть задания':'Решение упражнения · авторский разбор';
  return `<details class="task-solution reviewed-answer"><summary>${title}</summary><div class="task-solution-body"><p class="book-text">${esc(review.answer)}</p>${pages}${links}</div></details>`;
 }
 function authoredAnswer(item,task){
